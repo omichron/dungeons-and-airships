@@ -6,6 +6,7 @@
 #include <vector>
 #include <sstream>
 #include <string>
+#include "TMXParser.h"
 using namespace oxygine;
 
 //it is our resources
@@ -71,10 +72,10 @@ public:
 		auto currentPosition = Vector2(0, 0);
 		auto tileSize = m_tileSprites[0]->getSize();
 		size_t i = 0;
-		for (size_t y = 0; y < m_rows; ++y, currentPosition.y += tileSize.y)
+		for (size_t y = 0; y < m_rows; ++y, currentPosition.y += tileSize.y - 0.5)
 		{
 			currentPosition.x = 0;
-			for (size_t x = 0; x < m_cols; ++x, ++i, currentPosition.x += tileSize.x)
+			for (size_t x = 0; x < m_cols; ++x, ++i, currentPosition.x += tileSize.x - 0.5)
 			{
 				m_tileSprites[i]->setPosition(currentPosition);
 			}
@@ -145,13 +146,17 @@ public:
 		Map->setPosition(Vector2(0, 0));
 		addChild(Map);
 
+		TMX::Parser tmx;
+		tmx.load("test_map.tmx");
+		
+		;
         //create button Sprite
         /*spSprite*/ Button = new TileMap(5, 5, 256, 16, "PathAndObjects");
-		Button->SetTiles("1,2,2,2,3,\
+		Button->SetTiles(/*"1,2,2,2,3,\
 			17,18,18,18,19,\
 			17,18,18,18,19,\
 			17,18,18,18,19,\
-			33,34,34,34,35");
+			33,34,34,34,35"*/tmx.tileLayer[tmx.tileLayer.begin()->first].data.contents);
 
         //setup it:
         //set button.png image. Resource 'button' defined in 'res.xml'
