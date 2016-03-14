@@ -149,22 +149,13 @@ public:
 		TMX::Parser tmx;
 		tmx.load("test_map.tmx");
 		
-		;
         //create button Sprite
-        /*spSprite*/ Button = new TileMap(5, 5, 256, 16, "PathAndObjects");
-		Button->SetTiles(/*"1,2,2,2,3,\
-			17,18,18,18,19,\
-			17,18,18,18,19,\
-			17,18,18,18,19,\
-			33,34,34,34,35"*/tmx.tileLayer[tmx.tileLayer.begin()->first].data.contents);
+		auto tileBegin = tmx.tileLayer.begin()->second;
+		auto tilesetBegin = tmx.tilesetList.front();
+        Button = new TileMap(tileBegin.width, tileBegin.height, tilesetBegin.tilecount, tilesetBegin.columns, tilesetBegin.name);
+		Button->SetTiles(tmx.tileLayer[tmx.tileLayer.begin()->first].data.contents);
 
-        //setup it:
-        //set button.png image. Resource 'button' defined in 'res.xml'
-        //Button->setResAnim(gameResources.getResAnim("button"));
-
-		
-
-        //centered button at screen
+		//centered button at screen
         Vector2 pos = getStage()->getSize() / 2 - Button->getSize() / 2;
         Button->setPosition(pos);
 

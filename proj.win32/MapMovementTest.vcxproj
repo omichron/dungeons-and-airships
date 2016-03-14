@@ -72,7 +72,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../oxygine-framework//oxygine/src;../..//SDL/include;../../oxygine-framework//oxygine/third_party/win32/pthreads/include;D:\PersonalStuff\oxygine\dungeons-and-airships\TMXParser\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../oxygine-framework//oxygine/src;../..//SDL/include;../../oxygine-framework//oxygine/third_party/win32/pthreads/include;..\TMXParser\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

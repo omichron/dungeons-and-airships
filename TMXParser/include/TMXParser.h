@@ -38,6 +38,11 @@ namespace TMX
       struct Tileset {
         unsigned int firstGID;
         std::string source;
+		std::string name;
+		size_t tilewidth;
+		size_t tileheight;
+		size_t tilecount;
+		size_t columns;
       };
 
       struct Data {
@@ -47,11 +52,13 @@ namespace TMX
       };
 
       struct TileLayer {
-        std::string name;
-        bool visible;
+        std::string name; 
+		size_t width;
+		size_t height;
         float opacity;
         Data data;
         std::map<std::string, std::string> property;
+		bool visible;
       };
 
       struct Object {
@@ -95,6 +102,13 @@ namespace TMX
       std::map<std::string, ImageLayer> imageLayer;
     protected:
     private:
+		const char* LoadElement(const char* elementName, rapidxml::xml_node<>* root_node) const;
+
+		template <typename T>
+		T LoadElement(const char* elementName, rapidxml::xml_node<>* root_node) const
+		{
+			return T();
+		}
   };
 
 }
